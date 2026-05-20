@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Snega Murugan — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0f16;--surface:#111620;--card:#161d2c;--card2:#1c2438;
+  --border:#1f2b3d;--teal:#00ffb8;--tdim:rgba(0,255,184,0.09);--tbdr:rgba(0,255,184,0.22);
+  --text:#cdd8ea;--bright:#eef3fb;--muted:#6b80a0;--muted2:#8899bb;
+  --serif:'Times New Roman',Times,Georgia,serif;--sans:'DM Sans','Helvetica Neue',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.72;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px;}
+#cg{position:fixed;width:360px;height:360px;border-radius:50%;pointer-events:none;z-index:9999;background:radial-gradient(circle,rgba(0,255,184,.05),transparent 70%);transform:translate(-50%,-50%);filter:blur(16px);transition:left .08s,top .08s;}
+#bt{position:fixed;bottom:1.8rem;right:1.8rem;width:42px;height:42px;border-radius:50%;background:var(--teal);color:#0b0f16;border:none;font-size:1.1rem;cursor:pointer;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;z-index:90;display:flex;align-items:center;justify-content:center;font-weight:700;}
+#bt.show{opacity:1;transform:none;}#bt:hover{filter:brightness(1.1);transform:translateY(-2px)!important;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,15,22,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nb{font-family:var(--serif);font-size:1rem;color:var(--teal);font-style:italic;}
+.nl{display:flex;gap:1.5rem;list-style:none;}
+.nl a{color:var(--muted);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:2px;}
+.nl a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--teal);transition:width .25s;}
+.nl a:hover,.nl a.active{color:var(--teal);}
+.nl a:hover::after,.nl a.active::after{width:100%;}
+section{padding:5.5rem 1.5rem;position:relative;overflow:hidden;}
+.con{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.28rem .9rem;border-radius:100px;background:var(--tdim);border:1px solid var(--tbdr);color:var(--teal);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:.7rem;}
+.stitle{font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.5rem);font-weight:400;color:var(--bright);line-height:1.2;margin-bottom:.5rem;}
+.sdesc{font-size:.88rem;color:var(--muted2);margin-bottom:2.4rem;}
+.cen{text-align:center;}.cen .sdesc{margin:0 auto 2.4rem;max-width:560px;}
+.fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.fi.vis{opacity:1;transform:none;}
+.sc{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease;}
+.sc.vis{opacity:1;transform:none;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+.od{animation:od 18s ease-in-out infinite;}
+.od2{animation-duration:24s;animation-delay:-8s;}
+.od3{animation-duration:20s;animation-delay:-4s;}
+.od4{animation-duration:30s;animation-delay:-12s;}
+@keyframes od{0%,100%{transform:translate(0,0)scale(1);}33%{transform:translate(14px,-11px)scale(1.03);}66%{transform:translate(-9px,16px)scale(.97);}}
+/* HOME */
+#home{min-height:100vh;display:flex;align-items:center;padding-top:5rem;}
+.hgrid{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;width:100%;max-width:1080px;margin:0 auto;}
+.hgreet{font-size:.85rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem;font-weight:500;animation:fu .5s ease .2s both;}
+.hname{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:400;color:var(--bright);line-height:1.05;margin-bottom:.5rem;animation:fu .5s ease .35s both;}
+.hname em{color:var(--teal);font-style:italic;}
+.hrole{font-size:clamp(1rem,2vw,1.25rem);color:var(--teal);font-weight:500;margin-bottom:1.8rem;animation:fu .5s ease .5s both;min-height:2rem;}
+.tcur{display:inline-block;width:2px;height:1.1em;background:var(--teal);margin-left:1px;vertical-align:middle;animation:bl .85s step-end infinite;}
+@keyframes bl{0%,100%{opacity:1;}50%{opacity:0;}}
+.hbtns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.8rem;animation:fu .5s ease .65s both;}
+.hsoc{display:flex;gap:.55rem;animation:fu .5s ease .8s both;}
+.soc{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.9rem;transition:all .2s;}
+.soc:hover{border-color:var(--teal);color:var(--teal);background:var(--tdim);}
+.shint{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;color:var(--muted);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;margin-top:2rem;animation:fu .5s ease 1s both;}
+.sarr{animation:bou .9s ease-in-out infinite;}
+@keyframes bou{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+@keyframes fu{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.sbadge{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem 1rem;border-radius:100px;border:1px solid rgba(0,255,184,.2);background:rgba(0,255,184,.05);color:var(--teal);font-size:.7rem;letter-spacing:.04em;margin-bottom:1.1rem;animation:fu .5s ease .05s both;}
+.pd{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pr 2.2s ease-in-out infinite;}
+@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(0,255,184,.5);}50%{box-shadow:0 0 0 6px rgba(0,255,184,0);}}
+.phwrap{width:280px;height:280px;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:fu .6s ease .4s both;}
+.phring{width:280px;height:280px;border-radius:50%;border:2px solid rgba(0,255,184,.25);display:flex;align-items:center;justify-content:center;animation:rb 4s ease-in-out infinite;}
+@keyframes rb{0%,100%{box-shadow:0 0 0 0 rgba(0,255,184,.12),0 0 36px rgba(0,255,184,.07);}50%{box-shadow:0 0 0 14px rgba(0,255,184,0),0 0 55px rgba(0,255,184,.13);}}
+.phinner{width:252px;height:252px;border-radius:50%;background:linear-gradient(135deg,var(--card) 0%,#0f1928 100%);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.phav{font-family:var(--serif);font-size:4rem;color:var(--teal);font-style:italic;}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.35rem;border-radius:6px;font-size:.8rem;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:var(--sans);}
+.btp{background:var(--teal);color:#0b0f16;}.btp:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.bto{border:1px solid var(--border);background:transparent;color:var(--bright);}.bto:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px);}
+.btg{border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--muted2);}.btg:hover{border-color:var(--teal);color:var(--teal);}
+/* ABOUT */
+#about{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.abio{max-width:780px;margin:0 auto 3rem;}
+.abio p{font-size:.92rem;color:var(--text);line-height:1.85;margin-bottom:1rem;font-weight:300;}
+.abio strong{color:var(--bright);font-weight:600;}
+.skwrap{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;}
+.skhead{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem;}
+.skhi{width:34px;height:34px;border-radius:8px;background:var(--tdim);border:1px solid var(--tbdr);display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.skhead h3{font-family:var(--serif);font-size:1.1rem;color:var(--bright);font-weight:400;}
+.skhint{font-size:.7rem;color:var(--muted);margin-bottom:1.2rem;font-style:italic;}
+.skcat{font-size:.6rem;text-transform:uppercase;letter-spacing:.16em;color:var(--teal);margin-bottom:.5rem;font-weight:700;margin-top:.9rem;}
+.sktags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.4rem;}
+.stag{display:inline-flex;align-items:center;gap:.28rem;font-size:.72rem;padding:.26rem .75rem;border-radius:6px;border:1px solid var(--border);background:rgba(255,255,255,.025);color:var(--text);cursor:default;transition:all .18s;}
+.stag:hover{border-color:var(--teal);color:var(--teal);background:var(--tdim);}
+.stag.ai{color:var(--teal);border-color:var(--tbdr);background:var(--tdim);}
+.softs{display:flex;flex-wrap:wrap;gap:.4rem;}
+.soft{font-size:.73rem;padding:.28rem .85rem;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--text);transition:all .2s;cursor:default;}
+.soft:hover{border-color:var(--teal);color:var(--teal);}
+/* EXPERIENCE */
+#experience{background:var(--bg);}
+.chdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
+.cyr{font-family:var(--serif);font-size:2rem;color:var(--teal);font-weight:400;line-height:1;}
+.cyrs{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+.cbox{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem 1.5rem 1rem;overflow-x:auto;}
+.csvgw{min-width:580px;}
+/* Chart role interactive */
+.cr{cursor:pointer;}
+.cr:hover .cring{filter:drop-shadow(0 0 8px rgba(0,255,184,.5));stroke:rgba(0,255,184,.9)!important;}
+.cr.act .cring{stroke:#00ffb8!important;stroke-width:2.8!important;filter:drop-shadow(0 0 12px rgba(0,255,184,.6))!important;}
+/* Role panel */
+.rpanel{background:var(--card);border:1px solid var(--tbdr);border-radius:10px;padding:1.3rem 1.5rem;margin-top:1rem;display:none;animation:pin .25s ease;}
+.rpanel.on{display:block;}
+@keyframes pin{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+.rptop{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
+.rpmeta{display:flex;align-items:center;gap:.9rem;flex:1;flex-wrap:wrap;}
+.rpico{width:44px;height:44px;border-radius:10px;background:var(--tdim);border:1px solid var(--tbdr);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.rprole{font-family:var(--serif);font-size:1.05rem;color:var(--bright);font-weight:400;font-style:italic;line-height:1.2;}
+.rpco{font-size:.78rem;color:var(--teal);font-weight:600;margin-top:.15rem;}
+.rppill{font-size:.62rem;padding:.15rem .65rem;border-radius:100px;border:1px solid var(--border);color:var(--muted2);}
+.rpperiod{font-size:.74rem;color:var(--muted2);}
+.rpclose{background:none;border:1px solid var(--border);color:var(--muted2);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .18s;flex-shrink:0;}
+.rpclose:hover{border-color:var(--teal);color:var(--teal);}
+.rpbl{list-style:none;}
+.rpbl li{font-size:.84rem;color:var(--text);padding:.28rem 0 .28rem 1.1rem;position:relative;line-height:1.62;font-weight:300;}
+.rpbl li::before{content:'▸';position:absolute;left:0;color:var(--teal);font-size:.7rem;line-height:1.9;}
+.rpbl li strong{color:var(--bright);font-weight:600;}
+/* ACHIEVEMENTS */
+#achievements{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem 1rem 1.4rem;text-align:center;transition:transform .2s,border-color .2s,box-shadow .2s;}
+.acard:hover{transform:translateY(-4px);border-color:var(--tbdr);box-shadow:0 12px 36px rgba(0,255,184,.08);}
+.aico{width:48px;height:48px;border-radius:50%;background:var(--tdim);border:1px solid var(--tbdr);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.2rem;}
+.anum{font-family:var(--serif);font-size:2.4rem;color:var(--teal);font-weight:400;line-height:1;margin-bottom:.5rem;}
+.albl{font-size:.74rem;color:var(--text);line-height:1.5;font-weight:300;}
+/* EDUCATION */
+#education{background:var(--bg);}
+.etl{position:relative;max-width:900px;margin:0 auto;}
+.eline{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 5%,var(--border) 95%,transparent);transform:translateX(-50%);}
+.edot{position:absolute;left:50%;width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid var(--bg);transform:translateX(-50%);z-index:2;}
+.eitem{display:flex;margin-bottom:1.5rem;position:relative;}
+.eitem:nth-child(odd){justify-content:flex-end;padding-right:calc(50% + 1.8rem);text-align:right;}
+.eitem:nth-child(even){justify-content:flex-start;padding-left:calc(50% + 1.8rem);}
+.ecard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.4rem;width:100%;max-width:380px;transition:border-color .2s,transform .2s;}
+.ecard:hover{border-color:var(--tbdr);transform:translateY(-2px);}
+.elogo{width:44px;height:44px;border-radius:8px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.8rem;}
+.eitem:nth-child(odd) .elogo{margin-left:auto;}
+.edeg{font-family:var(--serif);font-size:.98rem;color:var(--bright);font-weight:400;line-height:1.3;margin-bottom:.3rem;}
+.euni{font-size:.8rem;color:var(--teal);font-weight:600;margin-bottom:.4rem;}
+.emeta{display:flex;gap:.9rem;font-size:.7rem;color:var(--muted2);}
+.eitem:nth-child(odd) .emeta{justify-content:flex-end;}
+.ebadge{display:inline-block;margin-top:.55rem;font-size:.65rem;padding:.15rem .65rem;border-radius:4px;background:var(--tdim);border:1px solid var(--tbdr);color:var(--teal);}
+/* CERTIFICATIONS */
+#certifications{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:1rem;}
+.ccard{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--teal);border-radius:10px;padding:1.3rem;transition:transform .22s,box-shadow .22s;position:relative;}
+.ccard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,255,184,.08);}
+.cext{position:absolute;top:.9rem;right:.9rem;width:26px;height:26px;border-radius:5px;background:rgba(255,255,255,.03);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:var(--muted);text-decoration:none;transition:all .2s;}
+.cext:hover{border-color:var(--teal);color:var(--teal);}
+.clogo{font-size:1.4rem;margin-bottom:.7rem;display:block;}
+.cname{font-family:var(--serif);font-size:.95rem;color:var(--bright);font-weight:400;line-height:1.3;margin-bottom:.3rem;}
+.ciss{font-size:.7rem;color:var(--muted2);}
+/* PORTFOLIO */
+#portfolio{background:var(--bg);}
+.fbar{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;}
+.fb{font-size:.73rem;padding:.38rem 1rem;border-radius:100px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted2);transition:all .18s;font-family:var(--sans);display:inline-flex;align-items:center;gap:.35rem;}
+.fb:hover{border-color:var(--teal);color:var(--teal);}
+.fb.act{background:var(--teal);color:#0b0f16;border-color:var(--teal);font-weight:600;}
+.fc{background:rgba(0,0,0,.2);border-radius:100px;padding:.04rem .4rem;font-size:.62rem;}
+.fb.act .fc{background:rgba(0,0,0,.25);}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;}
+.pcard:hover{transform:translateY(-3px);border-color:var(--tbdr);box-shadow:0 12px 40px rgba(0,0,0,.35);}
+.pcard.hid{display:none;}
+.pprev{height:170px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.pcat{position:absolute;top:.75rem;left:.75rem;font-size:.62rem;padding:.2rem .65rem;border-radius:100px;font-weight:600;z-index:2;}
+.pext{position:absolute;top:.75rem;right:.75rem;width:28px;height:28px;border-radius:6px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;text-decoration:none;transition:all .2s;z-index:2;}
+.pext:hover{background:var(--teal);border-color:var(--teal);color:#0b0f16;}
+.pr1{background:linear-gradient(135deg,#081814,#0a1c20,#060d12);}
+.pr2{background:linear-gradient(135deg,#0a1018,#12182a,#070d14);}
+.pr3{background:linear-gradient(135deg,#080e18,#0d1724,#060c12);}
+.pr4{background:linear-gradient(135deg,#0e0a1c,#160e26,#0a0814);}
+.pr5{background:linear-gradient(135deg,#080f18,#0d1822,#060c14);}
+.pr6{background:linear-gradient(135deg,#081410,#0f1e18,#060e0a);}
+.pbody{padding:1.2rem 1.3rem;}
+.phdr{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.6rem;}
+.pico{width:32px;height:32px;border-radius:6px;background:var(--tdim);border:1px solid var(--tbdr);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.ptitle{font-family:var(--serif);font-size:1rem;color:var(--bright);font-weight:400;line-height:1.3;}
+/* Collapsed state — only title + toggle visible */
+.pdesc,.pimp,.ptlbl,.ptags,.pdetail{display:none;}
+/* Open state */
+.pcard.op .pdesc,.pcard.op .pimp,.pcard.op .ptlbl{display:block;}
+.pcard.op .ptags{display:flex;}
+.pcard.op.ex .pdetail{display:block;}
+.pdesc{font-size:.81rem;color:var(--text);line-height:1.65;margin-bottom:.85rem;font-weight:300;}
+.pimp{display:flex;align-items:flex-start;gap:.5rem;background:rgba(0,255,184,.06);border:1px solid rgba(0,255,184,.14);border-radius:6px;padding:.55rem .8rem;margin-bottom:.85rem;}
+.pimp-i{font-size:.85rem;flex-shrink:0;margin-top:.05rem;}
+.pimp-t{font-size:.78rem;color:var(--teal);line-height:1.5;font-weight:400;}
+.ptlbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);margin-bottom:.4rem;font-weight:600;}
+.ptags{flex-wrap:wrap;gap:.3rem;margin-bottom:.85rem;}
+.ptag{font-size:.63rem;padding:.14rem .52rem;border-radius:4px;border:1px solid var(--border);background:rgba(255,255,255,.025);color:var(--text);}
+.pdetail{border-top:1px solid var(--border);padding-top:.9rem;margin-top:.5rem;}
+.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:.9rem;}
+.pbl{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:6px;padding:.75rem .85rem;}
+.pbl h4{font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:.35rem;font-weight:700;}
+.pbl p{font-size:.77rem;color:var(--text);line-height:1.55;font-weight:300;}
+.pbadge{display:inline-block;font-size:.62rem;padding:.15rem .58rem;border-radius:3px;background:var(--tdim);border:1px solid var(--tbdr);color:var(--teal);margin-top:.5rem;}
+.ptrow{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;}
+.plnk{font-size:.75rem;color:var(--teal);text-decoration:none;display:flex;align-items:center;gap:.3rem;font-weight:500;transition:gap .2s;}
+.plnk:hover{gap:.5rem;}
+.ptog{font-size:.72rem;cursor:pointer;color:var(--muted2);display:flex;align-items:center;gap:.28rem;transition:color .18s;background:none;border:none;font-family:var(--sans);padding:0;}
+.ptog:hover{color:var(--teal);}
+.ptogi{display:inline-block;transition:transform .28s;}
+.pcard.op .ptogi{transform:rotate(180deg);}
+/* MORE PROJECTS */
+#more{background:var(--surface);border-top:1px solid var(--border);}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;}
+.mcard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.3rem;transition:border-color .22s,transform .2s;}
+.mcard:hover{border-color:var(--tbdr);transform:translateY(-2px);}
+.mico{font-size:1.2rem;margin-bottom:.65rem;}
+.mttl{font-family:var(--serif);font-size:.96rem;color:var(--bright);margin-bottom:.4rem;font-weight:400;font-style:italic;}
+.mdsc{font-size:.79rem;color:var(--text);line-height:1.6;margin-bottom:.8rem;font-weight:300;}
+.mtags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.mtag{font-size:.63rem;padding:.14rem .52rem;border-radius:4px;border:1px solid var(--border);background:rgba(255,255,255,.025);color:var(--text);}
+.mtag.hl{color:var(--teal);border-color:var(--tbdr);background:var(--tdim);}
+/* CONTACT */
+#contact{background:var(--bg);border-top:1px solid var(--border);}
+.cgw{display:grid;grid-template-columns:1fr 1.2fr;gap:2.5rem;}
+.cihead{font-family:var(--serif);font-size:1.2rem;color:var(--bright);font-weight:400;margin-bottom:.4rem;}
+.cisub{font-size:.85rem;color:var(--text);line-height:1.7;margin-bottom:1.4rem;font-weight:300;}
+.cicard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;display:flex;align-items:center;gap:.85rem;margin-bottom:.6rem;transition:border-color .2s;}
+.cicard:hover{border-color:var(--tbdr);}
+.ciic{width:36px;height:36px;border-radius:8px;background:var(--tdim);border:1px solid var(--tbdr);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.cilbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.1rem;}
+.cival{font-size:.84rem;color:var(--bright);}
+.cival a{color:var(--teal);text-decoration:none;}
+.csoc{display:flex;gap:.55rem;margin-top:1rem;}
+.fhead{font-family:var(--serif);font-size:1.1rem;color:var(--bright);font-weight:400;margin-bottom:1.2rem;}
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:.7rem;color:var(--muted2);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.08em;font-weight:500;}
+.finp{width:100%;background:var(--card);border:1px solid var(--border);border-radius:7px;padding:.72rem .95rem;font-size:.84rem;color:var(--bright);font-family:var(--sans);font-weight:300;outline:none;transition:border-color .2s;}
+.finp:focus{border-color:var(--teal);}
+.finp::placeholder{color:var(--muted);}
+textarea.finp{resize:vertical;min-height:115px;}
+.fsub{width:100%;background:var(--teal);color:#0b0f16;border:none;border-radius:7px;padding:.82rem;font-size:.88rem;font-weight:700;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:.4rem;transition:filter .2s,transform .15s;}
+.fsub:hover{filter:brightness(1.08);transform:translateY(-1px);}
+footer{background:var(--card);border-top:1px solid var(--border);text-align:center;padding:2rem 1rem;}
+footer p{font-size:.73rem;color:var(--muted2);margin-bottom:.25rem;}
+footer a{color:var(--teal);text-decoration:none;}
+@media(max-width:900px){
+  nav{padding:0 1rem;}.nl{display:none;}
+  .hgrid{grid-template-columns:1fr;text-align:center;}
+  .phwrap{margin:0 auto;}.hbtns,.hsoc{justify-content:center;}.shint{align-items:center;}
+  .agrid{grid-template-columns:repeat(3,1fr);}
+  .skwrap,.cgw{grid-template-columns:1fr;}
+  .eline{left:20px;}.edot{left:20px;}
+  .eitem:nth-child(odd),.eitem:nth-child(even){justify-content:flex-start;padding:0 0 0 3rem;text-align:left;}
+  .eitem:nth-child(odd) .elogo,.eitem:nth-child(odd) .emeta{margin-left:0;justify-content:flex-start;}
+  .pgrid,.mgrid{grid-template-columns:1fr;}
+  .pg3{grid-template-columns:1fr;}
+  #cg{display:none;}
+}
+@media(max-width:550px){.agrid{grid-template-columns:repeat(2,1fr);}}
+
+.mcard.hid{display:none;}
+.mlink{display:inline-flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--teal);text-decoration:none;margin-top:.6rem;opacity:.8;transition:opacity .2s;}
+.mlink:hover{opacity:1;}
+</style>
+</head>
+<body>
+<div id="cg"></div>
+<button id="bt" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+<nav>
+  <div class="nb">Snega Murugan</div>
+  <ul class="nl">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Key Achievements</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#portfolio">Projects</a></li>
+    <li><a href="#more">More Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="orb od" style="width:600px;height:600px;top:-130px;right:-140px;background:radial-gradient(circle,rgba(0,255,184,.1),transparent 70%);filter:blur(80px);"></div>
+  <div class="orb od2" style="width:480px;height:480px;bottom:-90px;left:-110px;background:radial-gradient(circle,rgba(120,40,200,.09),transparent 70%);filter:blur(90px);"></div>
+  <div class="orb od3" style="width:340px;height:340px;top:45%;left:6%;background:radial-gradient(circle,rgba(0,100,255,.06),transparent 70%);filter:blur(74px);"></div>
+  <div class="hgrid">
+    <div>
+      <div class="sbadge"><span class="pd"></span>Open to opportunities</div>
+      <p class="hgreet">Hello, I'm</p>
+      <h1 class="hname">Snega <em>Murugan</em></h1>
+      <p class="hrole"><span id="typed"></span><span class="tcur"></span></p>
+      <div class="hbtns">
+        <a href="#portfolio" class="btn btp">View My Work</a>
+        <a href="#contact" class="btn btg">Get In Touch</a>
+      </div>
+      <div class="hsoc">
+        <a href="https://www.linkedin.com/in/snegamurugan15" target="_blank" class="soc" title="LinkedIn">in</a>
+        <a href="https://github.com/Snegamurugan15" target="_blank" class="soc" title="GitHub">⌥</a>
+        <a href="mailto:snegamurugan15@gmail.com" class="soc" title="Email">✉</a>
+      </div>
+      <div class="shint"><span>Scroll Down</span><span class="sarr">↓</span></div>
+    </div>
+    <div class="phwrap">
+      <div class="phring"><div class="phinner"><span class="phav">SM</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="orb od" style="width:440px;height:440px;top:-60px;right:-70px;background:radial-gradient(circle,rgba(0,255,184,.07),transparent 70%);filter:blur(78px);"></div>
+  <div class="orb od3" style="width:380px;height:380px;bottom:-40px;left:-55px;background:radial-gradient(circle,rgba(0,100,255,.06),transparent 70%);filter:blur(74px);"></div>
+  <div class="con">
+    <div class="fi cen">
+      <div class="badge">👤 About Me</div>
+      <p class="stitle" style="font-size:clamp(1.1rem,2vw,1.35rem);font-weight:400;line-height:1.6;">
+        Statistician by training &nbsp;·&nbsp; Data engineer by practice<br/>
+        <span style="color:var(--teal);font-weight:600;">Analyst by instinct</span> — turning complex information into decisions that matter.
+      </p>
+    </div>
+    <div class="abio fi">
+      <p>I am a <strong>Big Data Analyst</strong> with a background that spans statistical modelling, data engineering, and machine learning — disciplines I have always found most useful when they work together rather than in isolation. My foundation is in Statistics, built through years studying inference, econometrics, and time-series analysis, which shaped how I think about data before I ever touch a tool.</p>
+      <p>The most formative part of my career was at the <strong>Reserve Bank of India</strong>, where I worked inside the Foreign Exchange Department on live macroeconomic datasets at a scale I had not encountered before. Working in a regulated environment, building validation pipelines, and presenting findings to senior leadership gave me a clear sense of what responsible, high-impact data work actually looks like. I then deliberately expanded into Big Data Analytics at <strong>Lambton College</strong> — adding distributed computing, cloud platforms, ML pipelines, and real-time data processing.</p>
+      <p>I am genuinely interested in <strong>how AI is reshaping analytics</strong> — from generative tools that accelerate exploratory work to LLMs that are changing how we interact with data entirely. I follow this space closely and actively incorporate these tools into how I work day to day. Currently based in <strong>Canada</strong> on a Post-Graduation Work Permit and actively seeking Data Analyst and Big Data Analyst roles.</p>
+    </div>
+    <div class="skwrap fi">
+      <div>
+        <div class="skhead"><div class="skhi">⟨⟩</div><h3>Technical Skills</h3></div>
+        <p class="skhint">Hover to highlight</p>
+        <div class="skcat">Programming & Data</div>
+        <div class="sktags"><span class="stag">📊 Python</span><span class="stag">🗄 SQL</span><span class="stag">📈 R</span><span class="stag">⚡ PySpark</span><span class="stag">💻 C</span><span class="stag">💻 C++</span><span class="stag">📋 MS Excel</span></div>
+        <div class="skcat">Analytics & Visualisation</div>
+        <div class="sktags"><span class="stag">📊 Tableau</span><span class="stag">📈 Power BI</span><span class="stag">🌊 Streamlit</span><span class="stag">📉 Dash/Plotly</span><span class="stag">📉 Seaborn</span><span class="stag">📊 QuickSight</span><span class="stag">📊 ggplot2</span></div>
+        <div class="skcat">Big Data & Cloud</div>
+        <div class="sktags"><span class="stag">🐘 Hadoop</span><span class="stag">⚡ Apache Spark</span><span class="stag">📨 Kafka</span><span class="stag">☁ AWS S3</span><span class="stag">🔍 Athena</span><span class="stag">🔵 Azure Databricks</span><span class="stag">🐳 Docker</span><span class="stag">☸ Kubernetes</span></div>
+        <div class="skcat">AI & Generative AI</div>
+        <div class="sktags"><span class="stag ai">🤖 ChatGPT</span><span class="stag ai">🧠 Claude</span><span class="stag ai">✨ Gemini</span><span class="stag ai">💻 GitHub Copilot</span><span class="stag ai">🤗 Hugging Face</span><span class="stag ai">🔗 LangChain</span><span class="stag ai">🔎 Perplexity AI</span><span class="stag ai">🖱 Cursor</span></div>
+        <div class="skcat">Machine Learning</div>
+        <div class="sktags"><span class="stag">🧪 Scikit-learn</span><span class="stag">🔥 TensorFlow</span><span class="stag">🕸 CNN/VGG16</span><span class="stag">🌳 XGBoost</span><span class="stag">🤗 PyTorch</span><span class="stag">📝 NLTK</span><span class="stag">🔗 LLM Embeddings</span></div>
+        <div class="skcat">Statistical Methods</div>
+        <div class="sktags"><span class="stag">📐 VECM/VAR</span><span class="stag">📉 Time Series</span><span class="stag">📊 Regression</span><span class="stag">🔗 Granger Causality</span><span class="stag">📏 Cointegration</span><span class="stag">📈 IRF</span><span class="stag">🔬 Hypothesis Testing</span><span class="stag">📋 SPSS</span><span class="stag">📐 Minitab</span></div>
+      </div>
+      <div>
+        <div class="skhead"><div class="skhi">👥</div><h3>Soft Skills</h3></div>
+        <p class="skhint">Core competencies</p>
+        <div class="softs">
+          <span class="soft">📢 Communication</span><span class="soft">🧩 Problem Solving</span><span class="soft">👥 Team Collaboration</span><span class="soft">🎯 Statistical Thinking</span><span class="soft">🔬 Critical Thinking</span><span class="soft">🎓 Teaching & Mentoring</span><span class="soft">🔍 Attention to Detail</span><span class="soft">🤝 Stakeholder Management</span><span class="soft">📋 Presentation Skills</span><span class="soft">⚡ Adaptability</span><span class="soft">⏰ Time Management</span><span class="soft">🧭 Decision Making</span><span class="soft">📝 Report Writing</span><span class="soft">🔄 Continuous Learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="orb od2" style="width:420px;height:420px;top:0;right:-60px;background:radial-gradient(circle,rgba(120,40,200,.07),transparent 70%);filter:blur(85px);"></div>
+  <div class="orb od4" style="width:360px;height:360px;bottom:0;left:-50px;background:radial-gradient(circle,rgba(0,255,184,.06),transparent 70%);filter:blur(78px);"></div>
+  <div class="con">
+    <div class="chdr fi">
+      <div>
+        <div class="badge">📈 Career Trajectory</div>
+        <h2 class="stitle" style="font-size:2rem;">Progressive Growth in Data &amp; Analytics</h2>
+      </div>
+      <div style="text-align:right;"><div class="cyr">2021 – Present</div><div class="cyrs">Experience Timeline</div></div>
+    </div>
+    <div class="cbox fi">
+      <div class="csvgw">
+        <svg viewBox="0 0 820 390" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:DM Sans,sans-serif;">
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00ffb8" stop-opacity=".2"/><stop offset="100%" stop-color="#00ffb8" stop-opacity=".9"/></linearGradient>
+            <filter id="gf" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+
+          <!--
+            X axis: Seniority levels (Entry → Junior → Mid-level → Senior → Expert)
+            Y axis: Years (2021 at bottom → 2026 at top)
+            Left margin: 80, Right: 20, Top: 25, Bottom: 55
+            Chart width: 720px (x: 80→800), Chart height: 290px (y: 25→315)
+            X positions: Entry=80, Junior=260, Mid-level=440, Senior=620, Expert=800
+            Y positions: 2021=315, 2022=257, 2023=199, 2024=141, 2025=83, 2026=25
+            Step X = 180, Step Y = 58
+          -->
+
+          <!-- Horizontal grid lines (years) -->
+          <line x1="80" y1="25"  x2="800" y2="25"  stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="80" y1="83"  x2="800" y2="83"  stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="80" y1="141" x2="800" y2="141" stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="80" y1="199" x2="800" y2="199" stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="80" y1="257" x2="800" y2="257" stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="80" y1="315" x2="800" y2="315" stroke="#1a2535" stroke-width="1" stroke-dasharray="5,5"/>
+
+          <!-- Y axis labels (years) -->
+          <text x="70" y="29"  fill="#8899bb" font-size="12" text-anchor="end">2026</text>
+          <text x="70" y="87"  fill="#8899bb" font-size="12" text-anchor="end">2025</text>
+          <text x="70" y="145" fill="#8899bb" font-size="12" text-anchor="end">2024</text>
+          <text x="70" y="203" fill="#8899bb" font-size="12" text-anchor="end">2023</text>
+          <text x="70" y="261" fill="#8899bb" font-size="12" text-anchor="end">2022</text>
+          <text x="70" y="319" fill="#8899bb" font-size="12" text-anchor="end">2021</text>
+
+          <!-- Axes -->
+          <line x1="80" y1="25"  x2="80"  y2="328" stroke="#2a3a50" stroke-width="1.5"/>
+          <line x1="80" y1="328" x2="800" y2="328" stroke="#2a3a50" stroke-width="1.5"/>
+
+          <!-- Vertical grid lines (seniority) -->
+          <line x1="260" y1="25" x2="260" y2="328" stroke="#141e2e" stroke-width="1" stroke-dasharray="3,7"/>
+          <line x1="440" y1="25" x2="440" y2="328" stroke="#141e2e" stroke-width="1" stroke-dasharray="3,7"/>
+          <line x1="620" y1="25" x2="620" y2="328" stroke="#141e2e" stroke-width="1" stroke-dasharray="3,7"/>
+          <line x1="800" y1="25" x2="800" y2="328" stroke="#141e2e" stroke-width="1" stroke-dasharray="3,7"/>
+
+          <!-- X axis tick marks -->
+          <line x1="80"  y1="328" x2="80"  y2="334" stroke="#2a3a50" stroke-width="1.5"/>
+          <line x1="260" y1="328" x2="260" y2="334" stroke="#2a3a50" stroke-width="1.5"/>
+          <line x1="440" y1="328" x2="440" y2="334" stroke="#2a3a50" stroke-width="1.5"/>
+          <line x1="620" y1="328" x2="620" y2="334" stroke="#2a3a50" stroke-width="1.5"/>
+          <line x1="800" y1="328" x2="800" y2="334" stroke="#2a3a50" stroke-width="1.5"/>
+
+          <!-- X axis labels (seniority) -->
+          <text x="80"  y="350" fill="#8899bb" font-size="12" text-anchor="middle">Entry</text>
+          <text x="260" y="350" fill="#8899bb" font-size="12" text-anchor="middle">Junior</text>
+          <text x="440" y="350" fill="#8899bb" font-size="12" text-anchor="middle">Mid-level</text>
+          <text x="620" y="350" fill="#8899bb" font-size="12" text-anchor="middle">Senior</text>
+          <text x="800" y="350" fill="#8899bb" font-size="12" text-anchor="middle">Expert</text>
+
+          <!--
+            Data points:
+            startMycareer: Junior(x=260), Nov 2021(y=315-(0.9/5)*290=263)
+            RBI: Junior-Mid(x=330), May 2023(y=315-(2.4/5)*290=176)
+            Varsity: Mid-level(x=440), Feb 2024(y=315-(3.1/5)*290=135)
+          -->
+
+          <!-- Area fill -->
+          <polygon points="260,263 330,176 440,135 440,328 260,328" fill="#00ffb8" opacity=".07"/>
+
+          <!-- Trend line -->
+          <polyline points="260,263 330,176 440,135" fill="none" stroke="url(#lg1)" stroke-width="2.5" stroke-linecap="round" filter="url(#gf)"/>
+
+          <!-- Hint -->
+          <text x="440" y="372" fill="rgba(107,128,160,.5)" font-size="11" text-anchor="middle" font-style="italic">Click a role bubble to view details</text>
+
+          <!-- ROLE 0: startMycareer (260, 263) — Junior, 2021 -->
+          <g class="cr" id="cr0" onclick="showR(0)">
+            <line x1="260" y1="237" x2="216" y2="208" stroke="rgba(0,255,184,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="112" y="194" width="206" height="46" rx="7" fill="#131d2e" stroke="rgba(0,255,184,.22)" stroke-width="1"/>
+            <text x="215" y="213" fill="#cdd8ea" font-size="10.5" text-anchor="middle" font-weight="600">Junior Analytics Consultant</text>
+            <text x="215" y="228" fill="#00ffb8" font-size="9.5" text-anchor="middle">startMycareer LLP · 2021–2023</text>
+            <circle cx="260" cy="263" r="28" fill="rgba(0,255,184,.05)"/>
+            <circle class="cring" cx="260" cy="263" r="22" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.45)" stroke-width="1.5"/>
+            <circle cx="260" cy="263" r="14" fill="rgba(0,255,184,.15)"/>
+            <text x="260" y="269" font-size="15" text-anchor="middle">💼</text>
+          </g>
+
+          <!-- ROLE 1: RBI (330, 176) — Junior-Mid, 2023 -->
+          <g class="cr" id="cr1" onclick="showR(1)">
+            <line x1="330" y1="150" x2="330" y2="118" stroke="rgba(0,255,184,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="225" y="104" width="210" height="46" rx="7" fill="#131d2e" stroke="rgba(0,255,184,.22)" stroke-width="1"/>
+            <text x="330" y="123" fill="#cdd8ea" font-size="10.5" text-anchor="middle" font-weight="600">Summer Intern</text>
+            <text x="330" y="138" fill="#00ffb8" font-size="9.5" text-anchor="middle">Reserve Bank of India · 2023</text>
+            <circle cx="330" cy="176" r="28" fill="rgba(0,255,184,.05)"/>
+            <circle class="cring" cx="330" cy="176" r="22" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.45)" stroke-width="1.5"/>
+            <circle cx="330" cy="176" r="14" fill="rgba(0,255,184,.15)"/>
+            <text x="330" y="182" font-size="15" text-anchor="middle">🏦</text>
+          </g>
+
+          <!-- ROLE 2: Varsity (440, 135) — Mid-level, 2024 — label to the right -->
+          <g class="cr" id="cr2" onclick="showR(2)">
+            <line x1="463" y1="135" x2="478" y2="120" stroke="rgba(0,255,184,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="478" y="104" width="210" height="46" rx="7" fill="#131d2e" stroke="rgba(0,255,184,.28)" stroke-width="1"/>
+            <text x="583" y="123" fill="#cdd8ea" font-size="10.5" text-anchor="middle" font-weight="600">Statistics Tutor</text>
+            <text x="583" y="138" fill="#00ffb8" font-size="9.5" text-anchor="middle">Varsity Tutors · 2024–Present</text>
+            <circle cx="440" cy="135" r="28" fill="rgba(0,255,184,.05)"/>
+            <circle class="cring" cx="440" cy="135" r="22" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.55)" stroke-width="1.5"/>
+            <circle cx="440" cy="135" r="14" fill="rgba(0,255,184,.18)"/>
+            <text x="440" y="141" font-size="15" text-anchor="middle">📚</text>
+          </g>
+
+          <!-- Future marker -->
+          <circle cx="530" cy="95" r="6" fill="none" stroke="rgba(0,255,184,.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="545" y="99" fill="rgba(0,255,184,.4)" font-size="10" font-style="italic">Next role →</text>
+        </svg>
+      </div>
+      <!-- Role detail panel -->
+      <div class="rpanel" id="rpanel">
+        <div class="rptop">
+          <div class="rpmeta" id="rpmeta"></div>
+          <button class="rpclose" onclick="closeR()">✕</button>
+        </div>
+        <ul class="rpbl" id="rpbl"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="orb od" style="width:400px;height:400px;top:-50px;left:-55px;background:radial-gradient(circle,rgba(0,255,184,.07),transparent 70%);filter:blur(78px);"></div>
+  <div class="orb od3" style="width:380px;height:380px;bottom:-40px;right:-50px;background:radial-gradient(circle,rgba(0,100,255,.06),transparent 70%);filter:blur(74px);"></div>
+  <div class="con">
+    <div class="fi cen">
+      <div class="badge">🏆 Key Achievements</div>
+      <h2 class="stitle">Measurable impact through data-driven solutions</h2>
+      <p class="sdesc">Numbers that tell the story of consistent analytical impact across institutions and industries.</p>
+    </div>
+    <div class="agrid fi">
+      <div class="acard sc"><div class="aico">📊</div><div class="anum" data-v="1000000" data-s="M+">0</div><div class="albl">Records Processed at Reserve Bank of India</div></div>
+      <div class="acard sc"><div class="aico">📈</div><div class="anum" data-v="8" data-s="+">0</div><div class="albl">Tableau &amp; Excel Dashboards Built for Executives</div></div>
+      <div class="acard sc"><div class="aico">⚡</div><div class="anum" data-v="35" data-s="%">0</div><div class="albl">Reporting Turnaround Reduction at startMycareer</div></div>
+      <div class="acard sc"><div class="aico">🎓</div><div class="anum" data-v="100" data-s="+">0</div><div class="albl">Students &amp; Professionals Tutored Across North America</div></div>
+      <div class="acard sc"><div class="aico">🗂</div><div class="anum" data-v="11" data-s="+">0</div><div class="albl">Projects Across ML, Big Data, Cloud &amp; AI</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="orb od2" style="width:400px;height:400px;bottom:-40px;right:-55px;background:radial-gradient(circle,rgba(0,100,255,.06),transparent 70%);filter:blur(76px);"></div>
+  <div class="con">
+    <div class="fi cen"><div class="badge">🎓 Education</div><h2 class="stitle">Academic background</h2><p class="sdesc">Statistical rigour meets big data engineering — built across three degrees.</p></div>
+    <div class="etl">
+      <div class="eline"></div>
+      <div class="eitem fi" style="padding-top:.6rem;">
+        <div class="edot" style="top:1.8rem;"></div>
+        <div class="ecard"><div class="elogo">🍁</div><div class="edeg">Postgraduate Certificate — Big Data Analytics</div><div class="euni">Lambton College</div><div class="emeta"><span>📍 Canada</span><span>🎓 Graduated: 2025</span></div><span class="ebadge">🏅 Dean's Honour List</span></div>
+      </div>
+      <div class="eitem fi">
+        <div class="edot" style="top:1.8rem;"></div>
+        <div class="ecard"><div class="elogo">📐</div><div class="edeg">Master of Science — Statistics</div><div class="euni">Madras Christian College</div><div class="emeta"><span>📍 India</span><span>🎓 Graduated: 2023</span></div><span class="ebadge">📚 Published Researcher — IGI Global 2024</span></div>
+      </div>
+      <div class="eitem fi">
+        <div class="edot" style="top:1.8rem;"></div>
+        <div class="ecard"><div class="elogo">📊</div><div class="edeg">Bachelor of Science — Statistics</div><div class="euni">Madras Christian College</div><div class="emeta"><span>📍 India</span><span>🎓 Graduated: 2021</span></div><span class="ebadge">🥇 Gold Medallist · Top of Cohort</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="orb od2" style="width:420px;height:420px;top:-50px;right:-65px;background:radial-gradient(circle,rgba(120,40,200,.08),transparent 70%);filter:blur(84px);"></div>
+  <div class="orb od4" style="width:360px;height:360px;bottom:-40px;left:-50px;background:radial-gradient(circle,rgba(0,255,184,.06),transparent 70%);filter:blur(76px);"></div>
+  <div class="con">
+    <div class="fi cen"><div class="badge">🎖 Certifications</div><h2 class="stitle">Professional certifications</h2><p class="sdesc">Demonstrating expertise in data analytics, AI, and data engineering.</p></div>
+    <div class="cgrid fi">
+      <div class="ccard"><a href="https://www.linkedin.com/in/snegamurugan15/overlay/Certifications/931023263/treasury/?profileId=ACoAAD_V5HUBRpzQITrAeeOSKxK3UU_Zoxyqk-I" target="_blank" class="cext">↗</a><span class="clogo">🤖</span><div class="cname">AI Fluency</div><div class="ciss">Issued by Anthropic</div></div>
+      <div class="ccard"><a href="https://www.linkedin.com/in/snegamurugan15/overlay/Certifications/731546713/treasury/?profileId=ACoAAD_V5HUBRpzQITrAeeOSKxK3UU_Zoxyqk-I" target="_blank" class="cext">↗</a><span class="clogo">🧠</span><div class="cname">Big Data in the Age of AI</div><div class="ciss">Issued by NASBA</div></div>
+      <div class="ccard"><a href="https://courses.cognitiveclass.ai/certificates/abf0bd52a2e645f6bd1965089f69fc7b" target="_blank" class="cext">↗</a><span class="clogo">📊</span><div class="cname">Data Visualization with R</div><div class="ciss">Issued by Cognitive Class · IBM</div></div>
+      <div class="ccard"><a href="https://courses.cognitiveclass.ai/certificates/e24d80f99f36437dadc706cb073d5430" target="_blank" class="cext">↗</a><span class="clogo">💻</span><div class="cname">R for Data Science</div><div class="ciss">Issued by Cognitive Class · IBM</div></div>
+      <div class="ccard"><a href="https://drive.google.com/file/d/1MieSq7tf9run72D362QwvHWoYitDt-C-/view" target="_blank" class="cext">↗</a><span class="clogo">🎖</span><div class="cname">Lean Six Sigma Green Belt</div><div class="ciss">Issued by BizP</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="orb od" style="width:440px;height:440px;top:-55px;left:-75px;background:radial-gradient(circle,rgba(0,255,184,.07),transparent 70%);filter:blur(80px);"></div>
+  <div class="orb od3" style="width:380px;height:380px;bottom:-45px;right:-55px;background:radial-gradient(circle,rgba(0,100,255,.06),transparent 70%);filter:blur(74px);"></div>
+  <div class="con">
+    <div class="fi cen">
+      <div class="badge">💼 Featured Projects</div>
+      <h2 class="stitle">Real-world solutions that drive impact</h2>
+      <p class="sdesc">Click any card to expand and explore the full case study.</p>
+      <div class="fbar">
+        <button class="fb act" onclick="fp('all',this)">All <span class="fc">8</span></button>
+        <button class="fb" onclick="fp('ml',this)">ML / AI <span class="fc">5</span></button>
+        <button class="fb" onclick="fp('bd',this)">Big Data <span class="fc">2</span></button>
+        <button class="fb" onclick="fp('cloud',this)">Cloud Analytics <span class="fc">1</span></button>
+      </div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard fi" data-cat="ml">
+        <div class="pprev pr1"><span class="pcat" style="background:rgba(0,255,184,.15);color:#00ffb8;">ML / AI</span><a href="https://github.com/Snegamurugan15/ace-resilience-r-dashboard" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#00ffb8" stop-opacity="0"/><stop offset="100%" stop-color="#00ffb8" stop-opacity=".18"/></linearGradient></defs>
+            <line x1="30" y1="140" x2="310" y2="140" stroke="#00ffb8" stroke-width=".5" opacity=".2"/>
+            <line x1="30" y1="110" x2="310" y2="110" stroke="#00ffb8" stroke-width=".5" opacity=".12"/>
+            <line x1="30" y1="80" x2="310" y2="80" stroke="#00ffb8" stroke-width=".5" opacity=".12"/>
+            <polygon points="30,130 80,112 130,90 185,100 230,72 278,48 310,35 310,140 30,140" fill="url(#g1)"/>
+            <polyline points="30,130 80,112 130,90 185,100 230,72 278,48 310,35" fill="none" stroke="#00ffb8" stroke-width="2" opacity=".7" stroke-linecap="round"/>
+            <circle cx="130" cy="90" r="4" fill="#00ffb8" opacity=".9"/>
+            <circle cx="230" cy="72" r="4" fill="#00ffb8" opacity=".9"/>
+            <circle cx="310" cy="35" r="5" fill="#00ffb8" opacity=".9"/>
+            <rect x="50" y="118" width="12" height="22" rx="2" fill="#00ffb8" opacity=".2"/><rect x="100" y="105" width="12" height="35" rx="2" fill="#00ffb8" opacity=".2"/><rect x="150" y="95" width="12" height="45" rx="2" fill="#00ffb8" opacity=".2"/>
+            <text x="170" y="18" fill="#00ffb8" font-size="11" text-anchor="middle" opacity=".5" font-family="Times New Roman,serif">FDI Trend Analysis · Reserve Bank of India</text>
+            <rect x="240" y="100" width="65" height="22" rx="4" fill="rgba(0,255,184,.12)" stroke="rgba(0,255,184,.3)" stroke-width="1"/>
+            <text x="272" y="115" fill="#00ffb8" font-size="9.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">SVM · 83% Acc.</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">🏦</div><div class="ptitle">Unlocking FDI Trends — Reserve Bank of India</div></div>
+          <p class="pdesc">Institutional research for India's central bank: a three-part study predicting national FDI inflows using ML classifiers, analysing Tamil Nadu sector-wise FDI trends, and modelling long-run FDI–GVA relationships using econometric methods across Manufacturing, Services, Electricity, Construction, and Mining.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Achieved 83% SVM prediction accuracy — closest to actual 2023 inflows of ₹36,74,350M — by comparing 5 ML classifiers against 5 international index scores; confirmed bidirectional causality in 4 of 5 sectors; certified and presented to senior management at RBI Chennai.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">R</span><span class="ptag">SVM</span><span class="ptag">Random Forest</span><span class="ptag">XGBoost</span><span class="ptag">GLM</span><span class="ptag">Ridge Regression</span><span class="ptag">VECM</span><span class="ptag">Johansen Cointegration</span><span class="ptag">Granger Causality</span><span class="ptag">IRF</span><span class="ptag">VIF</span><span class="ptag">ggplot2</span><span class="ptag">dplyr</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/ace-resilience-r-dashboard" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>India's central bank needed a systematic approach to predicting national FDI inflows and understanding how foreign investment relates to economic output — with limited automated forecasting capability across 5 economic sectors.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Three-part analysis: (1) compared 5 ML classifiers using international index scores (EoDB, FDICI, GII, IIP, IEF); (2) Tamil Nadu sector-wise FDI trend analysis; (3) Johansen Cointegration + VECM + Granger Causality + IRF to model long-run FDI–GVA relationships. VIF used for multicollinearity validation.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>SVM at 83% accuracy — closest to actual ₹36,74,350M. Bidirectional causality confirmed in 4 of 5 sectors. 5-quarter FDI and GVA forecasts generated using VECM and Vec2VAR models. Research certified by RBI Chennai senior management.</p></div>
+          </div><span class="pbadge">Individual Research Project · Foreign Exchange Department, RBI</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="bd">
+        <div class="pprev pr2"><span class="pcat" style="background:rgba(0,100,255,.15);color:#6eb5ff;">Big Data</span><a href="https://github.com/Snegamurugan15/used-car-price-prediction" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6eb5ff" stop-opacity=".5"/><stop offset="100%" stop-color="#6eb5ff" stop-opacity=".1"/></linearGradient></defs>
+            <rect x="22" y="92" width="30" height="50" rx="3" fill="url(#g2)" stroke="#6eb5ff" stroke-width=".8" stroke-opacity=".3"/>
+            <rect x="62" y="68" width="30" height="74" rx="3" fill="url(#g2)" stroke="#6eb5ff" stroke-width=".8" stroke-opacity=".3"/>
+            <rect x="102" y="40" width="30" height="102" rx="3" fill="#00ffb8" opacity=".25" stroke="#00ffb8" stroke-width=".8" stroke-opacity=".5"/>
+            <rect x="142" y="55" width="30" height="87" rx="3" fill="url(#g2)" stroke="#6eb5ff" stroke-width=".8" stroke-opacity=".3"/>
+            <rect x="182" y="78" width="30" height="64" rx="3" fill="url(#g2)" stroke="#6eb5ff" stroke-width=".8" stroke-opacity=".3"/>
+            <rect x="222" y="95" width="30" height="47" rx="3" fill="url(#g2)" stroke="#6eb5ff" stroke-width=".8" stroke-opacity=".3"/>
+            <text x="117" y="35" fill="#00ffb8" font-size="8" text-anchor="middle" opacity=".9" font-family="DM Sans,sans-serif">BEST</text>
+            <rect x="265" y="38" width="68" height="18" rx="3" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width="1"/>
+            <text x="299" y="50" fill="#00ffb8" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">RMSE: 1.135</text>
+            <text x="170" y="155" fill="#6eb5ff" font-size="10" text-anchor="middle" opacity=".4" font-family="Times New Roman,serif">3,000,040 Records · PySpark ML</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">🚗</div><div class="ptitle">DrivenInsights — Used Car Price Prediction (USA)</div></div>
+          <p class="pdesc">End-to-end big data ML pipeline on 3,000,040 U.S. used car records (66 raw columns) to understand pricing dynamics and build a predictive model. Covers feature engineering, distributed PySpark processing, model comparison, and animated visualisations for business stakeholders.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Reduced RMSE to 1.135 (Random Forest) — outperforming Linear Regression (4.89) and GBT (28.44) — by narrowing 66 features to 12 key predictors and training on 3M+ records; identified Sedans as most price-stable for U.S. families.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">PySpark</span><span class="ptag">SparkSession</span><span class="ptag">VectorAssembler</span><span class="ptag">Random Forest</span><span class="ptag">Linear Regression</span><span class="ptag">Gradient Boosted Trees</span><span class="ptag">RegressionEvaluator</span><span class="ptag">Plotly</span><span class="ptag">Seaborn</span><span class="ptag">pandas</span><span class="ptag">NumPy</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/used-car-price-prediction" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>U.S. families increasingly rely on used vehicles due to rising new-car costs, but pricing is opaque and variable. The challenge: analyse a 3,000,040-record dataset with 66 columns to identify pricing drivers and build a reliable prediction model.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Feature selection: 66 → 12 key predictors (mileage, year, seating capacity, fuel economy, dimensions). PySpark ML pipeline with SparkSession, VectorAssembler, 80/20 split. Compared Random Forest (1000 trees), Linear Regression, and GBT by RMSE. Animated Plotly bar charts and Seaborn heatmaps for results.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>RF RMSE 1.135 (best); SUV/Crossover peaked at 250K listings in 2020; Sedans and Hatchbacks most price-stable. Nissan Altima, Toyota Corolla, and Chevrolet Malibu flagged as top family-value vehicles.</p></div>
+          </div><span class="pbadge">Group Project · Big Data Tools 01, Lambton College (Fall 2023)</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="cloud">
+        <div class="pprev pr3"><span class="pcat" style="background:rgba(255,165,0,.12);color:#ffb347;">Cloud Analytics</span><a href="https://github.com/Snegamurugan15/aws-s3-athena-quicksight-pipeline" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="85" r="45" fill="none" stroke="#ffb347" stroke-width="1" opacity=".25"/>
+            <circle cx="90" cy="85" r="32" fill="rgba(255,179,71,.06)" stroke="#ffb347" stroke-width=".8" opacity=".3"/>
+            <text x="90" y="82" fill="#ffb347" font-size="10" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".7">AWS S3</text>
+            <text x="90" y="96" fill="#ffb347" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".5">Storage</text>
+            <line x1="122" y1="70" x2="175" y2="48" stroke="#00ffb8" stroke-width="1" opacity=".35" stroke-dasharray="4,3"/>
+            <line x1="122" y1="90" x2="175" y2="90" stroke="#6eb5ff" stroke-width="1" opacity=".35" stroke-dasharray="4,3"/>
+            <line x1="122" y1="108" x2="175" y2="132" stroke="#ffb347" stroke-width="1" opacity=".35" stroke-dasharray="4,3"/>
+            <rect x="175" y="32" width="75" height="32" rx="5" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width="1"/>
+            <text x="212" y="47" fill="#00ffb8" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">QuickSight</text>
+            <text x="212" y="58" fill="#00ffb8" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".6">7 Visualisations</text>
+            <rect x="175" y="74" width="75" height="32" rx="5" fill="rgba(110,181,255,.1)" stroke="rgba(110,181,255,.3)" stroke-width="1"/>
+            <text x="212" y="89" fill="#6eb5ff" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Athena SQL</text>
+            <text x="212" y="100" fill="#6eb5ff" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".6">Serverless</text>
+            <rect x="175" y="116" width="75" height="32" rx="5" fill="rgba(255,179,71,.1)" stroke="rgba(255,179,71,.3)" stroke-width="1"/>
+            <text x="212" y="131" fill="#ffb347" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Python Dash</text>
+            <text x="212" y="142" fill="#ffb347" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".6">boto3</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">☁️</div><div class="ptitle">AWS Cloud BI — S3 · Athena · QuickSight · Python</div></div>
+          <p class="pdesc">End-to-end cloud data architecture demonstrating three distinct analytical access methods on one Titanic dataset stored in AWS S3 — a Python Dash interactive dashboard, 7 Amazon QuickSight BI visualisations, and serverless SQL querying through Amazon Athena — with zero infrastructure management.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Delivered a fully operational cloud-native BI pipeline across 3 methods from one S3 dataset — with no database infrastructure — revealing 1st class survival rate 62.9% vs 24.2% for 3rd class through serverless Athena SQL analysis.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">AWS S3</span><span class="ptag">Amazon Athena</span><span class="ptag">Amazon QuickSight</span><span class="ptag">Python</span><span class="ptag">Dash</span><span class="ptag">Plotly</span><span class="ptag">boto3</span><span class="ptag">SQL</span><span class="ptag">AWS EC2</span><span class="ptag">pandas</span><span class="ptag">NumPy</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/aws-s3-athena-quicksight-pipeline" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>Demonstrate end-to-end cloud data architecture using one dataset accessed three ways — Python dashboards, BI visualisations, and serverless SQL — all through AWS S3, without managing any traditional database infrastructure.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Part 1: Python Dash/Plotly dashboard connected to S3 via boto3 with dropdown bar charts and scatter plots. Part 2: 7 QuickSight visualisations (survival pie, name word cloud, waterfall chart, age-survival combo, gender survival). Part 3: Athena SQL on TitanicDB; results stored to separate "Athena-results" S3 bucket.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>Full cloud-native BI pipeline across all 3 methods. 1st class survival rate 62.9% vs 24.2% for 3rd class discovered. One S3 dataset simultaneously serving Python apps, BI tools, and ad-hoc SQL — zero infrastructure overhead.</p></div>
+          </div><span class="pbadge">Individual Project · Lambton College</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="ml">
+        <div class="pprev pr4"><span class="pcat" style="background:rgba(200,40,120,.12);color:#ff6eb4;">ML / AI</span><a href="https://github.com/Snegamurugan15/pneumonia-detection" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="135" height="130" rx="6" fill="rgba(255,110,180,.05)" stroke="#ff6eb4" stroke-width="1" opacity=".35"/>
+            <rect x="185" y="20" width="135" height="130" rx="6" fill="rgba(255,110,180,.05)" stroke="rgba(255,110,180,.25)" stroke-width="1" opacity=".35"/>
+            <ellipse cx="75" cy="85" rx="30" ry="42" fill="none" stroke="#ff6eb4" stroke-width="1.5" opacity=".5"/>
+            <ellipse cx="112" cy="85" rx="22" ry="38" fill="none" stroke="#ff6eb4" stroke-width="1.5" opacity=".4"/>
+            <ellipse cx="242" cy="85" rx="30" ry="42" fill="rgba(255,110,180,.08)" stroke="#ff6eb4" stroke-width="1.5" opacity=".6"/>
+            <ellipse cx="278" cy="85" rx="22" ry="38" fill="rgba(255,110,180,.08)" stroke="#ff6eb4" stroke-width="1.5" opacity=".5"/>
+            <rect x="203" y="120" width="100" height="20" rx="3" fill="rgba(255,110,180,.15)" stroke="rgba(255,110,180,.4)" stroke-width="1"/>
+            <text x="253" y="133" fill="#ff6eb4" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Pneumonia Detected</text>
+            <rect x="22" y="120" width="70" height="20" rx="3" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width="1"/>
+            <text x="57" y="133" fill="#00ffb8" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Normal</text>
+            <rect x="125" y="8" width="90" height="20" rx="4" fill="rgba(255,110,180,.12)" stroke="rgba(255,110,180,.3)" stroke-width="1"/>
+            <text x="170" y="22" fill="#ff6eb4" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">VGG16 · 92%+ Accuracy</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">🫁</div><div class="ptitle">Pneumonia Detection — CNN + VGG16 (Clinical AI)</div></div>
+          <p class="pdesc">Deep learning classifier for 3-class chest X-ray diagnosis — Normal (1,585), Viral Pneumonia (1,493), and Bacterial Pneumonia (2,780 images) — using VGG16 transfer learning. My role: Model Building. Deployed as a Dash web app enabling non-technical clinical staff to upload X-rays and receive real-time probability scores.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Achieved 92%+ classification accuracy across all 3 classes by fine-tuning pre-trained VGG16 weights with image augmentation on 5,875 labelled X-rays; deployed as a zero-barrier clinical Dash interface accessible to non-technical staff.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">TensorFlow</span><span class="ptag">Keras</span><span class="ptag">VGG16</span><span class="ptag">CNN</span><span class="ptag">Transfer Learning</span><span class="ptag">Image Augmentation</span><span class="ptag">Dash</span><span class="ptag">Plotly</span><span class="ptag">NumPy</span><span class="ptag">scikit-learn</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/pneumonia-detection" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>Early, accurate detection of pneumonia from chest X-rays reduces hospitalisation risk and speeds treatment. Goal: build a 3-class AI classifier across 5,875 labelled images and deploy it in a usable interface that requires no technical knowledge from the clinical end user.</p></div>
+            <div class="pbl"><h4>My Role — Model Building</h4><p>Designed and trained the model using VGG16 transfer learning (13 convolutional layers, 3×3 filters; 5 max-pooling layers; 3 fully connected layers). Applied image augmentation to address class imbalance. Fine-tuned pre-trained ImageNet weights on the pneumonia dataset. Evaluated using confusion matrix analysis across training and validation splits.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>92%+ classification accuracy. Deployed as a Dash app — clinicians upload a chest X-ray and receive real-time probability scores for all 3 classes with no technical setup required from end users.</p></div>
+          </div><span class="pbadge">My Role: Model Building · Group Project, Lambton College</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="bd">
+        <div class="pprev pr5"><span class="pcat" style="background:rgba(0,100,255,.15);color:#6eb5ff;">Big Data</span><a href="https://github.com/Snegamurugan15/travel-vista-ai-platform" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="18" fill="none" stroke="#6eb5ff" stroke-width="1" opacity=".3"/><circle cx="170" cy="85" r="18" fill="none" stroke="#6eb5ff" stroke-width="1" opacity=".3"/><circle cx="260" cy="75" r="18" fill="none" stroke="#6eb5ff" stroke-width="1" opacity=".3"/>
+            <circle cx="80" cy="80" r="5" fill="#6eb5ff" opacity=".6"/><circle cx="170" cy="85" r="5" fill="#00ffb8" opacity=".7"/><circle cx="260" cy="75" r="5" fill="#6eb5ff" opacity=".6"/>
+            <path d="M 85 78 Q 125 55 165 85" fill="none" stroke="#00ffb8" stroke-width="1.5" opacity=".4" stroke-dasharray="5,3"/>
+            <path d="M 175 85 Q 215 60 255 77" fill="none" stroke="#00ffb8" stroke-width="1.5" opacity=".4" stroke-dasharray="5,3"/>
+            <rect x="15" y="138" width="60" height="18" rx="3" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width=".8"/>
+            <text x="45" y="150" fill="#00ffb8" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Kafka</text>
+            <rect x="82" y="138" width="60" height="18" rx="3" fill="rgba(110,181,255,.1)" stroke="rgba(110,181,255,.3)" stroke-width=".8"/>
+            <text x="112" y="150" fill="#6eb5ff" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">PySpark</text>
+            <rect x="149" y="138" width="60" height="18" rx="3" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width=".8"/>
+            <text x="179" y="150" fill="#00ffb8" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Kubernetes</text>
+            <rect x="216" y="138" width="60" height="18" rx="3" fill="rgba(110,181,255,.1)" stroke="rgba(110,181,255,.3)" stroke-width=".8"/>
+            <text x="246" y="150" fill="#6eb5ff" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">OAuth 2.0</text>
+            <text x="170" y="15" fill="#6eb5ff" font-size="10" text-anchor="middle" opacity=".4" font-family="Times New Roman,serif">Real-Time Travel Data Platform</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">✈️</div><div class="ptitle">Travel Vista — AI-Powered Travel Platform (WIL Capstone)</div></div>
+          <p class="pdesc">Production-grade, containerised travel platform built from architecture to deployment as the WIL capstone. Combines real-time Kafka data streams, PySpark stream processing, hybrid PostgreSQL + MongoDB storage, AWS S3 media, Docker + Kubernetes orchestration, and enterprise-grade OAuth 2.0 / TLS 1.3 security with Elastic Security threat monitoring.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Delivered a fully containerised, enterprise-grade production platform meeting OAuth 2.0 / TLS 1.3 security standards — the broadest project in the portfolio, spanning real-time data engineering, cloud infrastructure, microservices architecture, and application security in a single deployed system.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">SocketIO</span><span class="ptag">Apache Kafka</span><span class="ptag">PySpark</span><span class="ptag">PostgreSQL</span><span class="ptag">MongoDB</span><span class="ptag">AWS S3</span><span class="ptag">Docker</span><span class="ptag">Kubernetes</span><span class="ptag">OAuth 2.0</span><span class="ptag">TLS 1.3</span><span class="ptag">RSA-AES</span><span class="ptag">Elastic Security</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/travel-vista-ai-platform" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>Design and deliver a production-grade, secure, scalable travel platform handling real-time data streams, hybrid cloud storage, containerised deployment, and enterprise security — fully from architecture decisions to working deployment.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Flask + SocketIO backend for real-time updates; Kafka ingesting live weather and flight feeds; PySpark for scalable stream processing; PostgreSQL + MongoDB hybrid storage; AWS S3 for media; Docker + Kubernetes for orchestration; OAuth 2.0 / TLS 1.3 / RSA-AES encryption; Elastic Security for real-time threat monitoring.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>Fully containerised production platform meeting enterprise security standards — the most architecturally comprehensive project, spanning data engineering, cloud, real-time processing, and security in one deployed system.</p></div>
+          </div><span class="pbadge">WIL Capstone · Lambton College</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="ml">
+        <div class="pprev pr6"><span class="pcat" style="background:rgba(0,255,184,.15);color:#00ffb8;">ML / AI</span><a href="https://github.com/Snegamurugan15/ats-application" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="28" width="130" height="10" rx="2" fill="#00ffb8" opacity=".35"/>
+            <rect x="18" y="46" width="95" height="7" rx="2" fill="#00ffb8" opacity=".2"/><rect x="18" y="60" width="110" height="7" rx="2" fill="#00ffb8" opacity=".2"/>
+            <rect x="18" y="74" width="80" height="7" rx="2" fill="#00ffb8" opacity=".15"/><rect x="18" y="88" width="100" height="7" rx="2" fill="#00ffb8" opacity=".15"/>
+            <line x1="155" y1="85" x2="185" y2="85" stroke="#00ffb8" stroke-width="1.5" opacity=".6"/>
+            <polygon points="185,82 192,85 185,88" fill="#00ffb8" opacity=".6"/>
+            <circle cx="230" cy="85" r="42" fill="none" stroke="rgba(0,255,184,.15)" stroke-width="8"/>
+            <circle cx="230" cy="85" r="42" fill="none" stroke="#00ffb8" stroke-width="8" stroke-opacity=".7" stroke-dasharray="211 264" stroke-dashoffset="66" stroke-linecap="round"/>
+            <text x="230" y="80" fill="#00ffb8" font-size="18" text-anchor="middle" font-weight="700" font-family="Times New Roman,serif" opacity=".9">80%</text>
+            <text x="230" y="96" fill="#00ffb8" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".6">Match Score</text>
+            <rect x="185" y="138" width="90" height="18" rx="3" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width=".8"/>
+            <text x="230" y="150" fill="#00ffb8" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Gemini + Keras Model</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">📋</div><div class="ptitle">ATS Application — Gemini + Keras Resume Scoring</div></div>
+          <p class="pdesc">Streamlit app that extracts and structures text from uploaded PDF or DOCX resumes using the Google Gemini API, cleans and normalises the extracted content, then predicts an ATS-style job match score using a pre-trained Keras neural network model. Results downloadable as CSV for HR teams.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Automated resume-to-job-description matching at 80%+ predictive accuracy by combining Gemini API for intelligent text extraction with a Keras classifier — cutting manual HR pre-screening effort significantly per hiring cycle.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Streamlit</span><span class="ptag">Google Gemini API</span><span class="ptag">Keras</span><span class="ptag">TensorFlow</span><span class="ptag">PyPDF2</span><span class="ptag">python-docx</span><span class="ptag">scikit-learn</span><span class="ptag">pandas</span><span class="ptag">NumPy</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/ats-application" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>HR teams spend hours pre-screening resumes manually — slow, inconsistent, and prone to bias. A scalable automated system was needed to score resume–job description alignment quickly and consistently.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Pipeline: upload PDF/DOCX resume → Gemini API extracts and structures resume fields and JD requirements → text is cleaned and normalised → pre-trained Keras model predicts ATS match score → results are formatted and exported as CSV for HR teams.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>80%+ predictive accuracy on real job applications. HR pre-screening time reduced significantly per cycle. Downloadable CSV output enables batch processing of multiple candidates simultaneously.</p></div>
+          </div><span class="pbadge">Group Coursework Project · Lambton College</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="ml">
+        <div class="pprev pr1"><span class="pcat" style="background:rgba(0,255,184,.15);color:#00ffb8;">ML / AI</span><a href="https://github.com/Snegamurugan15/ats-resume-optimizer" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="130" height="110" rx="6" fill="rgba(0,255,184,.04)" stroke="#00ffb8" stroke-width=".8" opacity=".4"/>
+            <rect x="30" y="42" width="80" height="6" rx="2" fill="#00ffb8" opacity=".35"/>
+            <rect x="30" y="56" width="60" height="5" rx="2" fill="#00ffb8" opacity=".2"/>
+            <rect x="30" y="68" width="75" height="5" rx="2" fill="#00ffb8" opacity=".2"/>
+            <rect x="30" y="80" width="55" height="5" rx="2" fill="#00ffb8" opacity=".15"/>
+            <line x1="158" y1="85" x2="188" y2="85" stroke="#00ffb8" stroke-width="2" opacity=".5"/>
+            <polygon points="188,82 196,85 188,88" fill="#00ffb8" opacity=".5"/>
+            <rect x="200" y="30" width="120" height="110" rx="6" fill="rgba(0,255,184,.04)" stroke="#00ffb8" stroke-width=".8" opacity=".4"/>
+            <rect x="210" y="42" width="90" height="6" rx="2" fill="#00ffb8" opacity=".4"/>
+            <rect x="210" y="56" width="70" height="5" rx="2" fill="#00ffb8" opacity=".3"/>
+            <rect x="210" y="68" width="85" height="5" rx="2" fill="#00ffb8" opacity=".3"/>
+            <rect x="210" y="80" width="65" height="5" rx="2" fill="#00ffb8" opacity=".25"/>
+            <rect x="210" y="92" width="80" height="5" rx="2" fill="#00ffb8" opacity=".2"/>
+            <text x="85" y="18" fill="#00ffb8" font-size="8" text-anchor="middle" opacity=".5" font-family="DM Sans,sans-serif">Original</text>
+            <text x="260" y="18" fill="#00ffb8" font-size="8" text-anchor="middle" opacity=".5" font-family="DM Sans,sans-serif">Optimised</text>
+            <rect x="80" y="150" width="80" height="14" rx="3" fill="rgba(0,255,184,.12)" stroke="rgba(0,255,184,.3)" stroke-width=".8"/>
+            <text x="120" y="160" fill="#00ffb8" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Claude API</text>
+            <rect x="180" y="150" width="80" height="14" rx="3" fill="rgba(0,255,184,.08)" stroke="rgba(0,255,184,.2)" stroke-width=".8"/>
+            <text x="220" y="160" fill="#00ffb8" font-size="7.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".7">Google Drive</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">✍️</div><div class="ptitle">ATS Resume Optimizer — Claude API + Google Drive</div></div>
+          <p class="pdesc">Streamlit app that uses the Anthropic Claude API to analyse a job description, estimate ATS keyword match coverage, generate an optimised resume tailored to the role, and produce a matching cover letter — both as downloadable DOCX files, optionally saved to Google Drive via service-account integration.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Reduced manual resume tailoring time from hours to minutes by leveraging Claude API for intelligent JD analysis and resume rewriting — with automated DOCX generation and Google Drive integration enabling a seamless single-click job application workflow.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Streamlit</span><span class="ptag">Anthropic Claude API</span><span class="ptag">Google Drive API</span><span class="ptag">python-docx</span><span class="ptag">PyPDF2</span><span class="ptag">Keyword Matching</span><span class="ptag">DOCX Generation</span><span class="ptag">Service Account Auth</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/ats-resume-optimizer" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>Tailoring a resume and writing a cover letter for each job application is time-consuming and inconsistent. A tool was needed to automate ATS-aligned resume optimisation and cover letter generation from any job description.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Upload PDF/DOCX resume + paste JD → Claude API analyses requirements and estimates keyword match score → generates optimised resume and matching cover letter → outputs as DOCX files → optionally saves to Google Drive via service-account JSON credentials configured in the sidebar.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>End-to-end resume optimisation workflow in one Streamlit interface — from raw resume to tailored DOCX + cover letter in minutes. Google Drive integration enables direct cloud saving without manual file management.</p></div>
+          </div><span class="pbadge">Individual Project · Anthropic Claude API Integration</span></div>
+        </div>
+      </div>
+
+      <div class="pcard fi" data-cat="ml">
+        <div class="pprev pr4"><span class="pcat" style="background:rgba(200,40,120,.12);color:#ff6eb4;">ML / AI</span><a href="https://github.com/Snegamurugan15/breast-cancer-ann-predictor" target="_blank" class="pext">↗</a>
+          <svg viewBox="0 0 340 170" style="position:absolute;inset:0;width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="130" width="290" height="1" fill="#ff6eb4" opacity=".2"/>
+            <circle cx="60"  cy="110" r="4" fill="#ff6eb4" opacity=".5"/>
+            <circle cx="90"  cy="75"  r="4" fill="#00ffb8" opacity=".6"/>
+            <circle cx="120" cy="95"  r="4" fill="#ff6eb4" opacity=".5"/>
+            <circle cx="150" cy="55"  r="4" fill="#00ffb8" opacity=".7"/>
+            <circle cx="180" cy="80"  r="4" fill="#ff6eb4" opacity=".5"/>
+            <circle cx="210" cy="60"  r="4" fill="#00ffb8" opacity=".6"/>
+            <circle cx="240" cy="45"  r="4" fill="#00ffb8" opacity=".7"/>
+            <circle cx="270" cy="70"  r="4" fill="#ff6eb4" opacity=".5"/>
+            <circle cx="300" cy="50"  r="4" fill="#00ffb8" opacity=".6"/>
+            <polyline points="60,110 90,75 120,95 150,55 180,80 210,60 240,45 270,70 300,50" fill="none" stroke="#00ffb8" stroke-width="1.5" opacity=".35" stroke-dasharray="4,3"/>
+            <rect x="20" y="20" width="100" height="22" rx="4" fill="rgba(0,255,184,.1)" stroke="rgba(0,255,184,.3)" stroke-width=".8"/>
+            <text x="70" y="34" fill="#00ffb8" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Benign · ANN</text>
+            <rect x="220" y="20" width="100" height="22" rx="4" fill="rgba(255,110,180,.1)" stroke="rgba(255,110,180,.3)" stroke-width=".8"/>
+            <text x="270" y="34" fill="#ff6eb4" font-size="8.5" text-anchor="middle" font-family="DM Sans,sans-serif" opacity=".9">Malignant · ANN</text>
+            <text x="170" y="155" fill="#ff6eb4" font-size="10" text-anchor="middle" opacity=".4" font-family="Times New Roman,serif">569 samples · 30 features · MLPClassifier</text>
+          </svg>
+        </div>
+        <div class="pbody">
+          <div class="phdr"><div class="pico">🩺</div><div class="ptitle">Breast Cancer ANN Predictor — Streamlit ML App</div></div>
+          <p class="pdesc">Interactive Streamlit app that classifies breast cancer samples as malignant or benign using an Artificial Neural Network (MLPClassifier) on the Breast Cancer Wisconsin Diagnostic dataset — 569 samples and 30 numeric features extracted from digitised cell nucleus images. Configurable hidden layers, activation function, and solver, with live probability scores.</p>
+          <div class="pimp"><span class="pimp-i">📈</span><span class="pimp-t">Delivered a configurable ANN classifier on 569 clinical samples with real-time malignant/benign probability output — demonstrating how adjustable neural network architecture (hidden layers, activation, solver) affects classification performance on a high-stakes medical dataset.</span></div>
+          <div class="ptlbl">Technologies Used</div>
+          <div class="ptags"><span class="ptag">Python</span><span class="ptag">Streamlit</span><span class="ptag">scikit-learn</span><span class="ptag">MLPClassifier</span><span class="ptag">ANN</span><span class="ptag">pandas</span><span class="ptag">NumPy</span><span class="ptag">matplotlib</span><span class="ptag">seaborn</span><span class="ptag">pickle</span><span class="ptag">Wisconsin Dataset</span></div>
+          <div class="ptrow"><a href="https://github.com/Snegamurugan15/breast-cancer-ann-predictor" target="_blank" class="plnk">View on GitHub →</a><button class="ptog" onclick="openP(this)"><span>Expand</span><span class="ptogi">▼</span></button></div>
+          <div class="pdetail"><div class="pg3">
+            <div class="pbl"><h4>The Problem</h4><p>Build an accessible ML tool for classifying breast cancer samples (malignant or benign) from 30 numeric cell nucleus features — demonstrating how neural network architecture choices affect classification performance on a high-stakes medical dataset.</p></div>
+            <div class="pbl"><h4>My Approach</h4><p>Loaded the Breast Cancer Wisconsin Diagnostic dataset via sklearn (569 samples, 30 features). Trained an MLPClassifier with configurable hidden layers, activation function, solver, and max iterations. Saved model + scaler as .pkl artifacts. Streamlit interface allows users to configure the architecture and enter feature values for live prediction.</p></div>
+            <div class="pbl"><h4>The Outcome</h4><p>Accurate ANN classifier with real-time malignant/benign probability output. Feature correlation heatmap and class distribution charts enable exploratory analysis. Saved model artifacts allow reuse without retraining.</p></div>
+          </div><span class="pbadge">Individual Project · Medical ML · Educational Use</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MORE PROJECTS -->
+<section id="more">
+  <div class="orb od2" style="width:420px;height:420px;top:-50px;right:-65px;background:radial-gradient(circle,rgba(0,255,184,.07),transparent 70%);filter:blur(82px);"></div>
+  <div class="orb od4" style="width:360px;height:360px;bottom:-40px;left:-50px;background:radial-gradient(circle,rgba(120,40,200,.07),transparent 70%);filter:blur(78px);"></div>
+  <div class="con">
+    <div class="fi cen"><div class="badge">🗂 More Projects</div><h2 class="stitle">Additional work across the stack</h2><p class="sdesc">Spanning NLP, econometrics, visualisation, big data engineering, and intelligent automation.</p>
+      <div class="fbar" style="margin-top:1.2rem;">
+        <button class="fb act" onclick="fm('all',this)">All <span class="fc">6</span></button>
+        <button class="fb" onclick="fm('ml-ai',this)">ML / AI <span class="fc">2</span></button>
+        <button class="fb" onclick="fm('r-stats',this)">R &amp; Stats <span class="fc">2</span></button>
+        <button class="fb" onclick="fm('big-data',this)">Big Data <span class="fc">1</span></button>
+        <button class="fb" onclick="fm('nlp',this)">NLP <span class="fc">1</span></button>
+      </div>
+    </div>
+    <div class="mgrid fi">
+      <div class="mcard sc" data-mcat="r-stats">
+        <div class="mico">🧬</div>
+        <div class="mttl">ACE Resilience R Dashboard</div>
+        <div class="mdsc">R Shiny dashboard and ML workflow for ACE (Adverse Childhood Experiences) and resilience research — built on the data behind the IGI Global publication. Includes ACE/CER response scoring, Random Forest and SVM model artifacts (.rds), and a reproducible retraining pipeline.</div>
+        <div class="mtags"><span class="mtag hl">R</span><span class="mtag hl">Shiny</span><span class="mtag hl">Random Forest</span><span class="mtag hl">SVM</span><span class="mtag">ggplot2</span><span class="mtag">dplyr</span></div>
+        <a href="https://github.com/Snegamurugan15/ace-resilience-r-dashboard" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+      <div class="mcard sc" data-mcat="ml-ai">
+        <div class="mico">🔥</div>
+        <div class="mttl">Algerian Forest Fire FWI Regression</div>
+        <div class="mdsc">Regression analysis predicting Fire Weather Index (FWI) from the Algerian Forest Fires dataset using meteorological features — Temperature, RH, Wind Speed, Rain, FFMC, DMC, DC, ISI, and BUI. Compared Linear, Polynomial, Lasso, and Ridge regression with saved model artifacts.</div>
+        <div class="mtags"><span class="mtag hl">Python</span><span class="mtag hl">scikit-learn</span><span class="mtag hl">Ridge</span><span class="mtag hl">Lasso</span><span class="mtag">Polynomial Regression</span><span class="mtag">pandas</span></div>
+        <a href="https://github.com/Snegamurugan15/algerian-forest-fire-regression" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+      <div class="mcard sc" data-mcat="r-stats">
+        <div class="mico">📈</div>
+        <div class="mttl">Canada FDI–GDP Time Series</div>
+        <div class="mdsc">Multivariate time series forecasting on Canadian FDI and GDP using VAR lag order selection (AIC/BIC/HQ), Johansen Cointegration testing, VECM error correction dynamics, Granger Causality, and IRF on Statistics Canada data — delivering multi-quarter policy-relevant forecasts.</div>
+        <div class="mtags"><span class="mtag hl">R</span><span class="mtag hl">VECM</span><span class="mtag hl">VAR</span><span class="mtag hl">Johansen</span><span class="mtag">Granger Causality</span><span class="mtag">IRF</span></div>
+        <a href="https://github.com/Snegamurugan15/canada-fdi-gdp-timeseries" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+      <div class="mcard sc" data-mcat="big-data">
+        <div class="mico">📉</div>
+        <div class="mttl">Customer Churn Prediction — PySpark</div>
+        <div class="mdsc">Applied PySpark MLlib to predict customer churn on telecom data. Feature engineering using VectorAssembler, classification model comparison (Logistic Regression, Random Forest, GBT), and retention strategy development based on key churn predictors identified from model outputs.</div>
+        <div class="mtags"><span class="mtag hl">PySpark</span><span class="mtag hl">MLlib</span><span class="mtag hl">Classification</span><span class="mtag">VectorAssembler</span><span class="mtag">Feature Engineering</span><span class="mtag">SparkSession</span></div>
+        <a href="https://github.com/Snegamurugan15/customer-churn-pyspark" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+      <div class="mcard sc" data-mcat="nlp">
+        <div class="mico">📰</div>
+        <div class="mttl">News NLP Text Analysis</div>
+        <div class="mdsc">Web scraped 100+ news articles using BeautifulSoup and computed 13 NLP metrics — Polarity Score, Subjectivity Score, Fog Index, Personal Pronoun count, Average Sentence Length, Syllable Per Word, and Complex Word Count — for editorial sentiment and readability analysis.</div>
+        <div class="mtags"><span class="mtag hl">Python</span><span class="mtag hl">NLTK</span><span class="mtag hl">BeautifulSoup</span><span class="mtag">Web Scraping</span><span class="mtag">Polarity</span><span class="mtag">Fog Index</span></div>
+        <a href="https://github.com/Snegamurugan15/news-nlp-text-analysis" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+      <div class="mcard sc" data-mcat="ml-ai">
+        <div class="mico">🍜</div>
+        <div class="mttl">Restaurant Recommendation — KNN</div>
+        <div class="mdsc">Personalised recommendation engine using K-Nearest Neighbours on 100K+ Yelp entries, incorporating cuisine type, location, ratings, and price range. Interactive Streamlit dashboard for real-time exploration. Achieved 35% relevancy improvement over baseline recommendations.</div>
+        <div class="mtags"><span class="mtag hl">Python</span><span class="mtag hl">KNN</span><span class="mtag hl">Streamlit</span><span class="mtag hl">scikit-learn</span><span class="mtag">Yelp Dataset</span><span class="mtag">pandas</span></div>
+        <a href="https://github.com/Snegamurugan15/restaurant-recommendation-system" target="_blank" class="mlink">⌥ View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="orb od2" style="width:420px;height:420px;top:-55px;right:-65px;background:radial-gradient(circle,rgba(120,40,200,.07),transparent 70%);filter:blur(84px);"></div>
+  <div class="orb od4" style="width:360px;height:360px;bottom:-40px;left:-50px;background:radial-gradient(circle,rgba(0,255,184,.06),transparent 70%);filter:blur(76px);"></div>
+  <div class="con">
+    <div class="fi cen"><div class="badge">✉ Contact</div><h2 class="stitle">Get In Touch</h2><p class="sdesc">Currently seeking full-time data analytics roles. Open to collaborations, projects, or just a friendly chat!</p></div>
+    <div class="cgw fi">
+      <div>
+        <div class="cihead">Contact Information</div>
+        <p class="cisub">Always open to discussing new opportunities, data analytics projects, or potential collaborations — feel free to reach out.</p>
+        <div class="cicard"><div class="ciic">✉</div><div><div class="cilbl">Email</div><div class="cival"><a href="mailto:snegamurugan15@gmail.com">snegamurugan15@gmail.com</a></div></div></div>
+        <div class="cicard"><div class="ciic">📍</div><div><div class="cilbl">Location</div><div class="cival" style="color:var(--text);">Canada · Open to Onsite, Hybrid or Remote Roles</div></div></div>
+        <div class="cicard"><div class="ciic">🔗</div><div><div class="cilbl">LinkedIn</div><div class="cival"><a href="https://www.linkedin.com/in/snegamurugan15" target="_blank">linkedin.com/in/snegamurugan15</a></div></div></div>
+        <p style="font-size:.7rem;color:var(--muted);margin-top:1rem;margin-bottom:.5rem;">Connect with me</p>
+        <div class="csoc">
+          <a href="https://www.linkedin.com/in/snegamurugan15" target="_blank" class="soc">in</a>
+          <a href="https://github.com/Snegamurugan15" target="_blank" class="soc">⌥</a>
+          <a href="mailto:snegamurugan15@gmail.com" class="soc">✉</a>
+        </div>
+      </div>
+      <div>
+        <div class="fhead">Send a Message</div>
+        <div class="fg"><label>Your Name</label><input type="text" class="finp" placeholder="Your full name"/></div>
+        <div class="fg"><label>Email Address</label><input type="email" class="finp" placeholder="your@email.com"/></div>
+        <div class="fg"><label>Subject</label><input type="text" class="finp" placeholder="What's this about?"/></div>
+        <div class="fg"><label>Message</label><textarea class="finp" placeholder="Tell me about your project, opportunity, or just say hello..."></textarea></div>
+        <button class="fsub" onclick="this.innerHTML='Message Sent ✓';this.style.background='#00c49a';">Send Message ✈</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:.3rem;"><a href="mailto:snegamurugan15@gmail.com">snegamurugan15@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/snegamurugan15" target="_blank">LinkedIn</a> &nbsp;·&nbsp; Canada</p>
+  <p>© 2026 Snega Murugan &nbsp;·&nbsp; Open to Data Analyst &amp; Big Data Analyst roles &nbsp;·&nbsp; Authorized to work full-time in Canada (PGWP)</p>
+</footer>
+
+<script>
+// CURSOR
+const cg=document.getElementById('cg');
+document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';});
+
+// TYPING
+const roles=['Big Data Analyst','Data Analyst','ML & Statistics Expert','Cloud Data Engineer'];
+let ri=0,ci=0,del=false;
+const tel=document.getElementById('typed');
+function tick(){
+  const r=roles[ri];
+  if(!del){tel.textContent=r.slice(0,++ci);if(ci===r.length){del=true;setTimeout(tick,1800);return;}}
+  else{tel.textContent=r.slice(0,--ci);if(ci===0){del=false;ri=(ri+1)%roles.length;}}
+  setTimeout(tick,del?50:80);
+}
+setTimeout(tick,1100);
+
+// ACTIVE NAV + BACK TOP
+const secs=[...document.querySelectorAll('section[id]')];
+const nls=document.querySelectorAll('.nl a');
+const bt=document.getElementById('bt');
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-80)cur=s.id;});
+  nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href').slice(1)===cur));
+  bt.classList.toggle('show',scrollY>400);
+},{passive:true});
+
+// SCROLL OBSERVER
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vis');
+    [...e.target.querySelectorAll('.sc')].forEach((c,i)=>{
+      setTimeout(()=>{c.classList.add('vis');countUp(c);},100+i*110);
+    });
+    obs.unobserve(e.target);
+  });
+},{threshold:.06});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// COUNTER
+function countUp(el){
+  const n=el.querySelector('.anum');
+  if(!n||n.dataset.done)return;
+  n.dataset.done=1;
+  const v=parseInt(n.dataset.v),s=n.dataset.s||'';
+  let c=0;const inc=Math.max(1,Math.floor(v/48));
+  const t=setInterval(()=>{
+    c=Math.min(c+inc,v);
+    n.textContent=v>=1000000?Math.floor(c/1000000)+'M+':c+s;
+    if(c>=v){n.textContent=v>=1000000?'1M+':v+s;clearInterval(t);}
+  },25);
+}
+
+// PROJECT FILTER
+function fp(cat,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  document.querySelectorAll('.pcard').forEach(c=>{
+    c.classList.toggle('hid',cat!=='all'&&c.dataset.cat!==cat);
+  });
+}
+
+// PROJECT EXPAND (one open at a time)
+function openP(btn){
+  const card=btn.closest('.pcard');
+  const opening=!card.classList.contains('op');
+  document.querySelectorAll('.pcard.op').forEach(c=>{
+    if(c!==card){
+      c.classList.remove('op','ex');
+      const b=c.querySelector('.ptog span:first-child');
+      if(b)b.textContent='Expand';
+    }
+  });
+  card.classList.toggle('op',opening);
+  const sp=btn.querySelector('span:first-child');
+  sp.textContent=opening?'Collapse':'Expand';
+  if(opening)setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
+  else card.classList.remove('ex');
+}
+
+// CAREER CHART CLICK
+const roleData=[
+  {icon:'💼',role:'Junior Analytics Consultant',company:'startMycareer LLP',period:'Nov 2021 – Jan 2023',type:'Full-time',
+   bullets:['Cut monthly reporting turnaround by <strong>35%</strong> (3 days → 2 days) by automating workflows across Python, R, Excel VBA, and SQL — freeing the team for strategic analysis.','Influenced pricing and GTM strategy for <strong>5+ business teams</strong> by delivering 15+ data-driven reports across 8+ geographic regions and 20+ industries.','Built <strong>8+ Tableau & Excel dashboards</strong> displaying 50K+ labour market data points — used in live executive meetings, not just filed away.']},
+  {icon:'🏦',role:'Summer Intern — Foreign Exchange Dept.',company:'Reserve Bank of India',period:'May – Aug 2023',type:'Internship',
+   bullets:['Improved data accuracy by <strong>~25%</strong> across 1M+ macroeconomic records by building SQL validation workflows and cross-system reconciliation checks.','Reduced daily preprocessing time by <strong>~30%</strong> (2 hours → ~84 minutes) by designing and deploying automated Python ETL pipelines.','Delivered trend analysis and anomaly detection on <strong>time-series FDI and exchange rate data</strong>, feeding directly into forecasting models and risk assessment.']},
+  {icon:'📚',role:'Statistics Tutor',company:'Varsity Tutors · A Nerdy Company',period:'Feb 2024 – Present',type:'Current',
+   bullets:['Maintained <strong>95%+ session completion rate</strong> across 100+ sessions with <strong>100+ students</strong> across North America in SQL, Python, R, Tableau, and Power BI.','Reduced learner knowledge gaps by diagnosing technical blockers and building <strong>structured, goal-aligned learning paths</strong> for each student.','Accelerated career transitions by mentoring professionals on <strong>SQL optimisation, Python automation, and dashboard design</strong> — job-ready fluency, not surface familiarity.']}
+];
+let activeR=-1;
+function showR(idx){
+  const panel=document.getElementById('rpanel');
+  if(activeR===idx){closeR();return;}
+  activeR=idx;
+  [0,1,2].forEach(i=>{const g=document.getElementById('cr'+i);if(g)g.classList.toggle('act',i===idx);});
+  const d=roleData[idx];
+  document.getElementById('rpmeta').innerHTML=
+    `<div class="rpico">${d.icon}</div><div><div class="rprole">${d.role}</div><div class="rpco">${d.company}</div></div><span class="rppill">${d.type}</span><span class="rpperiod">${d.period}</span>`;
+  document.getElementById('rpbl').innerHTML=d.bullets.map(b=>`<li>${b}</li>`).join('');
+  panel.classList.remove('on');void panel.offsetWidth;panel.classList.add('on');
+  setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+function closeR(){
+  activeR=-1;
+  document.getElementById('rpanel').classList.remove('on');
+  [0,1,2].forEach(i=>{const g=document.getElementById('cr'+i);if(g)g.classList.remove('act');});
+}
+// MORE PROJECTS FILTER
+function fm(cat,btn){
+  document.querySelectorAll('#more .fb').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  document.querySelectorAll('.mcard').forEach(c=>{
+    c.classList.toggle('hid',cat!=='all'&&c.dataset.mcat!==cat);
+  });
+}
+</script>
+</body>
+</html>
